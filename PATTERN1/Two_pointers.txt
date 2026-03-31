@@ -1,0 +1,52 @@
+1. Pattern Name & Category
+**Name:** Two Pointers — Opposite Ends
+**Category:** Array / String Traversal
+**Also called:** Left-Right Pointer, Pinching Pointer
+
+---
+
+### 2. TRIGGER PHRASES — "When I see THIS → I think TWO POINTERS"
+
+| If the problem says... | Think... |
+|------------------------|----------|
+| "sorted array" + "find pair/triplet with sum" | Two Pointer |
+| "container", "area", "maximize/minimize between two indices" | Two Pointer |
+| "palindrome check" on array/string | Two Pointer |
+| "remove duplicates in-place" | Two Pointer (same direction) |
+| "two elements that satisfy some condition" | Two Pointer |
+
+---
+
+### 3. REAL-WORLD ANALOGY 
+
+> Imagine you're searching for two people in a **height-sorted queue** (shortest to tallest) whose combined height equals exactly 10 feet.
+>
+> You put one hand at the **shortest person** (left) and one at the **tallest** (right).
+> - Combined too tall? Move right hand left (shrink the tall side)
+> - Combined too short? Move left hand right (grow the short side)
+> - Exact match? Found them!
+>
+> You never need to check every pair — the **sorted order gives you direction**.
+
+---
+
+### 4. VISUAL DIAGRAM 
+```
+Array: [1, 2, 3, 4, 6]   Target = 9
+        L              R
+
+Step 1:  L=0, R=4  →  1+6=7  → too small → L++
+        [1, 2, 3, 4, 6]
+             L         R
+
+Step 2:  L=1, R=4  →  2+6=8  → too small → L++
+        [1, 2, 3, 4, 6]
+                L      R
+
+Step 3:  L=2, R=4  →  3+6=9  → FOUND! 
+        [1, 2, 3, 4, 6]
+                L      R
+
+Key insight: When sum < target, we need bigger → move L right
+             When sum > target, we need smaller → move R left
+             Sorted order guarantees this is safe to do
