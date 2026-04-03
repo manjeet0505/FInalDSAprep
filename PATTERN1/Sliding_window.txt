@@ -1,0 +1,22 @@
+PATTERN 2 — SLIDING WINDOW 
+This is the second most asked array pattern in interviews. Amazon, Adobe, Flipkart love this.
+
+What Is Sliding Window?
+Two Pointer (Opposite Ends) → pointers move toward each other
+Sliding Window → pointers move in the same direction
+[a, b, c, d, e, f]
+ L  R              → window = [a,b,c]
+    L  R           → slide → window = [b,c,d]
+       L  R        → slide → window = [c,d,e]
+A window of elements slides across the array.
+
+TRIGGER PHRASES 
+If problem says...Think..."subarray/substring of size k" Sliding Window 
+"longest subarray with condition" Sliding Window 
+"minimum window containing..." Sliding Window 
+"contiguous elements that..." Sliding Window
+
+Two Types
+Type                Window Size                  Example 
+Fixed               Always size k                Max sum of k elements  
+Variable            Expands/shrinks              Longest substring without repeat
