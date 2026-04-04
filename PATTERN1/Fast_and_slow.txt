@@ -1,0 +1,31 @@
+PATTERN 3 — FAST & SLOW POINTERS 
+Also called Floyd's Tortoise and Hare Algorithm
+
+The Core Idea
+Two pointers move in the same direction but at different speeds
+Slow → moves 1 step at a time
+Fast → moves 2 steps at a time
+
+[1] → [2] → [3] → [4] → [5]
+ S            
+ F            
+
+After step 1:
+[1] → [2] → [3] → [4] → [5]
+       S            
+              F
+
+Why Is This Useful?
+If list is LINEAR → fast reaches end first
+If list has a CYCLE → fast laps slow → they MEET
+
+TRIGGER PHRASES 
+If problem says...Think..."find middle of linked list"Fast & Slow"detect cycle in linked list"Fast & Slow"find cycle start"Fast & Slow"find kth node from end"Fast & Slow"check if linked list is palindrome"Fast & Slow
+
+Real World Analogy 
+Two runners on a circular track
+One runs twice as fast as the other
+If track is circular → fast runner laps slow runner
+They WILL meet eventually
+
+If track is straight → fast runner just finishes first
