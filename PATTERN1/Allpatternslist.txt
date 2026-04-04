@@ -1,0 +1,51 @@
+ARRAYS & STRINGS
+Pattern 1  — Two Pointers (Opposite Ends)
+Pattern 2  — Sliding Window (Fixed + Variable)
+Pattern 3  — Fast & Slow Pointers
+Pattern 4  — Prefix Sum
+Pattern 5  — Kadane's Algorithm (Max Subarray)
+Pattern 6  — Sorting Based Patterns
+Pattern 7  — HashMap / Frequency Counting
+
+LINKED LIST
+Pattern 8  — Fast & Slow (Cycle Detection)
+Pattern 9  — Reversal
+Pattern 10 — Merge Patterns
+
+STACK & QUEUE
+Pattern 11 — Monotonic Stack
+Pattern 12 — Queue Simulation
+
+BINARY SEARCH
+Pattern 13 — Classic Binary Search
+Pattern 14 — Binary Search on Answer
+
+TREES
+Pattern 15 — DFS (Preorder/Inorder/Postorder)
+Pattern 16 — BFS (Level Order)
+Pattern 17 — BST Patterns
+
+GRAPHS
+Pattern 18 — BFS / DFS on Grid
+Pattern 19 — Topological Sort
+Pattern 20 — Dijkstra / Shortest Path
+Pattern 21 — Union Find (DSU)
+
+HEAPS
+Pattern 22 — Top K Elements
+Pattern 23 — Two Heaps
+
+DYNAMIC PROGRAMMING
+Pattern 24 — 1D DP
+Pattern 25 — 2D DP
+Pattern 26 — Knapsack
+Pattern 27 — LCS / LIS
+Pattern 28 — DP on Strings
+Pattern 29 — DP on Trees
+
+OTHERS
+Pattern 30 — Backtracking
+Pattern 31 — Greedy
+Pattern 32 — Bit Manipulation
+Pattern 33 — Trie
+Pattern 34 — Intervals

@@ -20,3 +20,5 @@ Two Types
 Type                Window Size                  Example 
 Fixed               Always size k                Max sum of k elements  
 Variable            Expands/shrinks              Longest substring without repeat
+
+
