@@ -1,0 +1,39 @@
+What Is Kadane's Algorithm?
+It finds the maximum sum subarray in O(n) time.
+nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
+Answer = 6  (subarray [4, -1, 2, 1])
+
+The Core Idea 
+At every index ask yourself:
+Should I EXTEND the previous subarray?
+OR
+Should I START fresh from here?
+
+currentSum = max(nums[i], currentSum + nums[i])
+                ↑                  ↑
+            start fresh        extend previous
+
+Real World Analogy 
+You're a trader. Every day stock either gains or loses.
+At each day you decide:
+
+→ Keep your current position (extend)
+→ Start fresh today (abandon losses)
+
+You always keep track of your best profit ever seen!
+
+Visual 
+nums       = [-2,  1, -3,  4, -1,  2,  1, -5,  4]
+currentSum = [-2,  1, -2,  4,  3,  5,  6,  1,  5]
+maxSum     = [-2,  1,  1,  4,  4,  5,  6,  6,  6]
+
+At index 3: currentSum = max(4, -2+4) = max(4,2) = 4 → start fresh!
+At index 4: currentSum = max(-1, 4-1) = max(-1,3) = 3 → extend!
+
+TRIGGER PHRASES 
+If problem says - 
+Think.
+"maximum sum subarray"                         Kadane's
+"largest contiguous sum"                       Kadane's
+"maximum subarray"                             Kadane's
+"best time to buy/sell stock"                  Kadane's variant
