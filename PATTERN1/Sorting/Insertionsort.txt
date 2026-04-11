@@ -1,0 +1,99 @@
+INSERTION SORT 
+
+What Is Insertion Sort? 
+Take one element at a time
+INSERT it into its correct position
+in the already sorted left portion
+
+Just like sorting playing cards in your hand!
+Pick one card → insert it in right position
+
+Real World Analogy 
+You're holding sorted cards: [2, 5, 8]
+You pick a new card: 4
+
+Now find correct position:
+4 < 8 → shift 8 right
+4 < 5 → shift 5 right
+4 > 2 → INSERT 4 here!
+
+Result: [2, 4, 5, 8] 
+
+Visual Dry Run 
+arr = [5, 3, 8, 4, 2]
+
+i=1: key=3
+     [5, 3, 8, 4, 2]
+      ↑
+     5>3 → shift 5 right
+     insert 3 at index 0
+     [3, 5, 8, 4, 2] 
+
+i=2: key=8
+     [3, 5, 8, 4, 2]
+         ↑
+     5<8 → no shift needed
+     [3, 5, 8, 4, 2] 
+
+i=3: key=4
+     [3, 5, 8, 4, 2]
+            ↑
+     8>4 → shift 8 right
+     5>4 → shift 5 right
+     3<4 → INSERT 4 here!
+     [3, 4, 5, 8, 2] 
+
+i=4: key=2
+     [3, 4, 5, 8, 2]
+               ↑
+     8>2 → shift 8 right
+     5>2 → shift 5 right
+     4>2 → shift 4 right
+     3>2 → shift 3 right
+     INSERT 2 at index 0
+     [2, 3, 4, 5, 8]  SORTED!
+
+Complexity Analysis 
+OUTER LOOP → runs n-1 times
+INNER LOOP → shifts elements → 1,2,3...n-1 times
+
+Best Case  → O(n)   → already sorted
+                       inner loop never runs!
+Average    → O(n²)
+Worst Case → O(n²)  → reverse sorted
+
+Space  → O(1) → in-place
+Stable → YES  → equal elements never cross!
+
+Java Code
+javapublic static void insertionSort(int[] arr) {
+    int n = arr.length;
+    
+    for (int i = 1; i < n; i++) {
+        int key = arr[i];    // element to insert
+        int j = i - 1;       // start from previous element
+        
+        // shift elements greater than key to right
+        while (j >= 0 && arr[j] > key) {
+            arr[j + 1] = arr[j]; // shift right
+            j--;
+        }
+        arr[j + 1] = key;    // insert at correct position
+    }
+}
+
+All Three Sorts Compared 
+              Bubble    Selection   Insertion
+Best Case  →  O(n)      O(n²)       O(n)   ← winner
+Average    →  O(n²)     O(n²)       O(n²)
+Worst Case →  O(n²)     O(n²)       O(n²)
+Swaps      →  O(n²)     O(n)        O(n²)
+Stable     →  YES       NO          YES
+In-place   →  YES       YES         YES
+
+When Is Insertion Sort Used In Real Life? 
+1. Small arrays → faster than Merge/Quick in practice
+2. Nearly sorted arrays → O(n) best case!
+3. TimSort (Java's Arrays.sort) uses Insertion Sort
+   for small subarrays internally!
+4. Online algorithm → can sort as data arrives
