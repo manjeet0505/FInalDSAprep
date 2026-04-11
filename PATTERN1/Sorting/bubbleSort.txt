@@ -1,0 +1,95 @@
+SORTING — BUBBLE SORT 🔓
+
+What Is Bubble Sort? 🧠
+Largest element BUBBLES UP to the end
+in each pass — just like air bubbles 
+rising to the top of water!
+
+Real World Analogy 🌍
+Imagine sorting a line of people by height.
+You walk from left to right.
+Every time you see a taller person before a shorter one
+→ you SWAP them.
+
+After one full walk → tallest person is at the end!
+Repeat for remaining people.
+
+Visual Dry Run 🎨
+arr = [5, 3, 8, 4, 2]
+
+PASS 1:
+[5, 3, 8, 4, 2]
+ ↑  ↑
+5>3 → SWAP → [3, 5, 8, 4, 2]
+    ↑  ↑
+   5<8 → NO SWAP → [3, 5, 8, 4, 2]
+       ↑  ↑
+      8>4 → SWAP → [3, 5, 4, 8, 2]
+          ↑  ↑
+         8>2 → SWAP → [3, 5, 4, 2, 8] ✅ 8 bubbled up!
+
+PASS 2:
+[3, 5, 4, 2, 8]
+3<5 → NO SWAP
+5>4 → SWAP → [3, 4, 5, 2, 8]
+5>2 → SWAP → [3, 4, 2, 5, 8] ✅ 5 bubbled up!
+
+PASS 3:
+[3, 4, 2, 5, 8]
+3<4 → NO SWAP
+4>2 → SWAP → [3, 2, 4, 5, 8] ✅ 4 bubbled up!
+
+PASS 4:
+[3, 2, 4, 5, 8]
+3>2 → SWAP → [2, 3, 4, 5, 8] ✅ SORTED!
+
+Complexity Analysis 🧠
+OUTER LOOP → runs n-1 times
+INNER LOOP → runs n-1, n-2, n-3... times
+
+Total comparisons:
+(n-1) + (n-2) + ... + 1 = n(n-1)/2 = O(n²)
+
+Best Case  → O(n)   → already sorted
+                       (with optimization flag)
+Average    → O(n²)
+Worst Case → O(n²)  → reverse sorted
+
+Space → O(1) → in-place sorting
+Stable → YES → equal elements maintain order
+
+Optimization 💡
+java// Without optimization → always O(n²)
+// With optimization → O(n) if already sorted!
+
+boolean swapped = false;
+// if no swaps in a pass → array is sorted → STOP!
+
+Java Code
+javapublic static void bubbleSort(int[] arr) {
+    int n = arr.length;
+    
+    for (int i = 0; i < n - 1; i++) {        // n-1 passes
+        boolean swapped = false;
+        
+        for (int j = 0; j < n - i - 1; j++) { // shrinks each pass
+            if (arr[j] > arr[j + 1]) {
+                // swap
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+                swapped = true;
+            }
+        }
+        if (!swapped) break; // ✅ optimization
+    }
+}
+
+Key Points For Interview 🎯
+1. Stable sort           → YES
+2. In-place              → YES
+3. Time complexity       → O(n²)
+4. Best case             → O(n) with swap flag
+5. When to use           → NEVER in production
+                           Only for teaching!
+6. Why n-i-1 inner loop → last i elements already sorted
