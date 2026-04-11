@@ -1,11 +1,11 @@
-SORTING — BUBBLE SORT 🔓
+SORTING — BUBBLE SORT 
 
-What Is Bubble Sort? 🧠
+What Is Bubble Sort? 
 Largest element BUBBLES UP to the end
 in each pass — just like air bubbles 
 rising to the top of water!
 
-Real World Analogy 🌍
+Real World Analogy 
 Imagine sorting a line of people by height.
 You walk from left to right.
 Every time you see a taller person before a shorter one
@@ -14,7 +14,7 @@ Every time you see a taller person before a shorter one
 After one full walk → tallest person is at the end!
 Repeat for remaining people.
 
-Visual Dry Run 🎨
+Visual Dry Run 
 arr = [5, 3, 8, 4, 2]
 
 PASS 1:
@@ -26,24 +26,24 @@ PASS 1:
        ↑  ↑
       8>4 → SWAP → [3, 5, 4, 8, 2]
           ↑  ↑
-         8>2 → SWAP → [3, 5, 4, 2, 8] ✅ 8 bubbled up!
+         8>2 → SWAP → [3, 5, 4, 2, 8]  8 bubbled up!
 
 PASS 2:
 [3, 5, 4, 2, 8]
 3<5 → NO SWAP
 5>4 → SWAP → [3, 4, 5, 2, 8]
-5>2 → SWAP → [3, 4, 2, 5, 8] ✅ 5 bubbled up!
+5>2 → SWAP → [3, 4, 2, 5, 8]  5 bubbled up!
 
 PASS 3:
 [3, 4, 2, 5, 8]
 3<4 → NO SWAP
-4>2 → SWAP → [3, 2, 4, 5, 8] ✅ 4 bubbled up!
+4>2 → SWAP → [3, 2, 4, 5, 8]  4 bubbled up!
 
 PASS 4:
 [3, 2, 4, 5, 8]
-3>2 → SWAP → [2, 3, 4, 5, 8] ✅ SORTED!
+3>2 → SWAP → [2, 3, 4, 5, 8]  SORTED!
 
-Complexity Analysis 🧠
+Complexity Analysis 
 OUTER LOOP → runs n-1 times
 INNER LOOP → runs n-1, n-2, n-3... times
 
@@ -58,7 +58,7 @@ Worst Case → O(n²)  → reverse sorted
 Space → O(1) → in-place sorting
 Stable → YES → equal elements maintain order
 
-Optimization 💡
+Optimization 
 java// Without optimization → always O(n²)
 // With optimization → O(n) if already sorted!
 
@@ -81,11 +81,11 @@ javapublic static void bubbleSort(int[] arr) {
                 swapped = true;
             }
         }
-        if (!swapped) break; // ✅ optimization
+        if (!swapped) break; //  optimization
     }
 }
 
-Key Points For Interview 🎯
+Key Points For Interview 
 1. Stable sort           → YES
 2. In-place              → YES
 3. Time complexity       → O(n²)

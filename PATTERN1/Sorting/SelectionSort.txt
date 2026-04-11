@@ -1,0 +1,84 @@
+SELECTION SORT 
+
+What Is Selection Sort? 
+Find the MINIMUM element from unsorted part
+Place it at the beginning
+Repeat for remaining elements
+
+Unlike Bubble Sort → makes FEWER swaps!
+Maximum n-1 swaps total
+
+Real World Analogy 
+Sorting playing cards in your hand:
+→ Find the smallest card in entire hand
+→ Swap it with leftmost unsorted card
+→ Repeat for remaining cards
+
+You always SELECT the minimum!
+
+Visual Dry Run 
+arr = [5, 3, 8, 4, 2]
+
+PASS 1: find min in [5,3,8,4,2] = 2
+        swap with index 0
+        [2, 3, 8, 4, 5]  2 is placed!
+
+PASS 2: find min in [3,8,4,5] = 3
+        already at correct position
+        [2, 3, 8, 4, 5]  3 is placed!
+
+PASS 3: find min in [8,4,5] = 4
+        swap with index 2
+        [2, 3, 4, 8, 5]  4 is placed!
+
+PASS 4: find min in [8,5] = 5
+        swap with index 3
+        [2, 3, 4, 5, 8]   SORTED!
+
+Complexity Analysis 
+OUTER LOOP → runs n-1 times
+INNER LOOP → finds minimum → n-1, n-2... times
+
+Total comparisons = O(n²)
+Total swaps       = O(n)  ← better than Bubble!
+
+Best Case  → O(n²) → NO optimization possible
+Average    → O(n²)
+Worst Case → O(n²)
+
+Space  → O(1) → in-place
+Stable → NO  → swapping breaks relative order
+
+Java Code
+javapublic static void selectionSort(int[] arr) {
+    int n = arr.length;
+    
+    for (int i = 0; i < n - 1; i++) {
+        int minIndex = i; // assume first is minimum
+        
+        for (int j = i + 1; j < n; j++) {
+            if (arr[j] < arr[minIndex]) {
+                minIndex = j; // found new minimum
+            }
+        }
+        // swap minimum with first unsorted
+        int temp = arr[minIndex];
+        arr[minIndex] = arr[i];
+        arr[i] = temp;
+    }
+}
+
+Bubble vs Selection 
+                Bubble Sort    Selection Sort
+Comparisons  →  O(n²)          O(n²)
+Swaps        →  O(n²)          O(n)      ← winner
+Stable       →  YES            NO
+Best Case    →  O(n)           O(n²)     ← bubble wins
+Use case     →  Never          When swaps are costly
+
+Key Points For Interview 
+1. Stable sort     → NO
+2. In-place        → YES
+3. Time complexity → O(n²) always
+4. Swaps          → O(n) maximum
+5. Better than Bubble when → swapping is expensive
