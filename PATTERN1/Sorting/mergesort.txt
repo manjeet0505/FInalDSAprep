@@ -1,0 +1,177 @@
+MERGE SORT 
+
+What Is Merge Sort? 
+DIVIDE the array into two halves
+RECURSIVELY sort each half
+MERGE the two sorted halves together
+
+Based on DIVIDE & CONQUER strategy!
+
+Real World Analogy 
+You have 8 unsorted papers to arrange.
+
+Step 1: Split into two piles of 4
+Step 2: Split each pile into two piles of 2
+Step 3: Split each pile into individual papers
+Step 4: Merge pairs in sorted order
+Step 5: Merge groups of 4 in sorted order
+Step 6: Merge final two halves → DONE!
+
+Splitting is easy → Merging is the real work!
+
+Visual Dry Run 
+arr = [5, 3, 8, 4, 2, 7, 1, 6]
+
+DIVIDE PHASE:
+[5, 3, 8, 4, 2, 7, 1, 6]
+         ↙              ↘
+  [5, 3, 8, 4]      [2, 7, 1, 6]
+    ↙       ↘          ↙       ↘
+ [5, 3]   [8, 4]   [2, 7]   [1, 6]
+  ↙   ↘   ↙   ↘   ↙   ↘   ↙   ↘
+ [5] [3] [8] [4] [2] [7] [1] [6]
+ ↑ single elements → BASE CASE!
+
+MERGE PHASE (coming back up):
+ [5] [3] → [3, 5]
+ [8] [4] → [4, 8]
+ [2] [7] → [2, 7]
+ [1] [6] → [1, 6]
+
+ [3,5] [4,8] → [3, 4, 5, 8]
+ [2,7] [1,6] → [1, 2, 6, 7]
+
+ [3,4,5,8] [1,2,6,7] → [1,2,3,4,5,6,7,8] 
+
+The Two Phases 
+PHASE 1 — DIVIDE (Going Down)
+→ Keep splitting array in half
+→ Until single elements remain
+→ Single element = already sorted!
+
+PHASE 2 — MERGE (Coming Back Up)
+→ Merge two sorted halves
+→ Use two pointers to compare
+→ Pick smaller element each time
+
+How Merge Works 
+Left  = [3, 5]
+Right = [4, 8]
+Result = []
+
+Step 1: L[0]=3, R[0]=4 → 3<4 → pick 3
+        Result = [3]
+        
+Step 2: L[1]=5, R[0]=4 → 5>4 → pick 4
+        Result = [3, 4]
+        
+Step 3: L[1]=5, R[1]=8 → 5<8 → pick 5
+        Result = [3, 4, 5]
+        
+Step 4: L exhausted → pick remaining R
+        Result = [3, 4, 5, 8] 
+
+Complexity Analysis 
+DIVIDE phase:
+→ keeps splitting in half
+→ log n levels deep
+
+MERGE phase:
+→ at each level → n comparisons total
+
+Total = n × log n = O(n log n) 
+
+Best Case  → O(n log n)
+Average    → O(n log n)
+Worst Case → O(n log n) ← ALWAYS same!
+
+Space → O(n) → needs temp array for merging
+Stable → YES → equal elements maintain order
+
+Why O(n log n)? 
+arr = [5, 3, 8, 4, 2, 7, 1, 6]  n=8
+
+Level 0: 1 array  of size 8  → 8  comparisons
+Level 1: 2 arrays of size 4  → 8  comparisons
+Level 2: 4 arrays of size 2  → 8  comparisons
+Level 3: 8 arrays of size 1  → base case
+
+Total levels = log₂(8) = 3
+Total comparisons = 3 × 8 = 24 = O(n log n) 
+
+Java Code — Full Implementation
+javapublic static void mergeSort(int[] arr, int left, int right) {
+    
+    // BASE CASE — single element
+    if (left >= right) return;
+    
+    // DIVIDE — find middle
+    int mid = left + (right - left) / 2;
+    
+    // RECURSIVELY sort left half
+    mergeSort(arr, left, mid);
+    
+    // RECURSIVELY sort right half
+    mergeSort(arr, mid + 1, right);
+    
+    // MERGE sorted halves
+    merge(arr, left, mid, right);
+}
+
+public static void merge(int[] arr, int left, int mid, int right) {
+    
+    // sizes of two halves
+    int n1 = mid - left + 1;
+    int n2 = right - mid;
+    
+    // temp arrays
+    int[] L = new int[n1];
+    int[] R = new int[n2];
+    
+    // copy data
+    for (int i = 0; i < n1; i++) L[i] = arr[left + i];
+    for (int j = 0; j < n2; j++) R[j] = arr[mid + 1 + j];
+    
+    // merge back
+    int i = 0, j = 0, k = left;
+    
+    while (i < n1 && j < n2) {
+        if (L[i] <= R[j]) {
+            arr[k++] = L[i++]; // pick from left
+        } else {
+            arr[k++] = R[j++]; // pick from right
+        }
+    }
+    
+    // copy remaining elements
+    while (i < n1) arr[k++] = L[i++];
+    while (j < n2) arr[k++] = R[j++];
+}
+
+Why mid = left + (right - left) / 2? 
+Why not just (left + right) / 2 ?
+
+If left = 1,000,000,000
+   right = 1,000,000,000
+
+left + right = 2,000,000,000 → INTEGER OVERFLOW! 
+
+left + (right - left) / 2 → SAFE 
+
+Key Points For Interview 
+1. Stable sort           → YES
+2. In-place              → NO → needs O(n) space
+3. Time complexity       → O(n log n) ALWAYS
+4. Best for             → Linked Lists!
+                          (no random access needed)
+5. Used in              → External sorting
+                          (data too large for RAM)
+6. Base case            → left >= right
+
+All Sorts Compared So Far 
+              Bubble  Selection  Insertion  Merge
+Best Case  →  O(n)    O(n²)      O(n)       O(n log n)
+Average    →  O(n²)   O(n²)      O(n²)      O(n log n)
+Worst Case →  O(n²)   O(n²)      O(n²)      O(n log n)
+Space      →  O(1)    O(1)       O(1)       O(n)
+Stable     →  YES     NO         YES        YES
