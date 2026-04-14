@@ -1,0 +1,104 @@
+What Is A Custom Comparator? 
+Java's default sort → ascending order
+But interviews ask:
+→ Sort by string length
+→ Sort by second element
+→ Sort descending
+→ Sort by custom rule
+
+Custom Comparator = YOU define the sorting rule!
+
+The Core Rule 
+java(a, b) -> {
+    if a should come BEFORE b → return NEGATIVE
+    if a should come AFTER b  → return POSITIVE
+    if equal                  → return ZERO
+}
+
+Memory Trick 
+(a, b) -> a - b   → ASCENDING
+          ↑
+          if a<b → negative → a comes first 
+
+(a, b) -> b - a   → DESCENDING
+          ↑
+          if b>a → negative → b comes first 
+
+Visual Examples
+
+Example 1 — Sort Integers Descending
+javaint[] arr = {5, 2, 8, 1, 9};
+
+// can't use lambda on primitives directly
+// convert to Integer[]
+Integer[] arr = {5, 2, 8, 1, 9};
+Arrays.sort(arr, (a, b) -> b - a);
+
+Result: [9, 8, 5, 2, 1] 
+
+Example 2 — Sort Strings by Length
+javaString[] words = {"banana", "apple", "kiwi", "fig"};
+Arrays.sort(words, (a, b) -> a.length() - b.length());
+
+Result: ["fig", "kiwi", "apple", "banana"] 
+
+Example 3 — Sort 2D Array by First Element
+javaint[][] intervals = {{3,6}, {1,4}, {2,5}};
+Arrays.sort(intervals, (a, b) -> a[0] - b[0]);
+
+Result: [[1,4], [2,5], [3,6]] 
+
+Example 4 — Sort by Multiple Conditions
+java// Sort by first element ASC
+// If equal → sort by second element DESC
+int[][] arr = {{1,5}, {1,3}, {2,4}};
+Arrays.sort(arr, (a, b) -> {
+    if (a[0] != b[0]) return a[0] - b[0]; // first element ASC
+    return b[1] - a[1];                    // second element DESC
+});
+
+Result: [[1,5], [1,3], [2,4]] 
+
+Three Ways To Write Comparator 
+java// WAY 1 — Lambda (modern, preferred)
+Arrays.sort(arr, (a, b) -> a - b);
+
+// WAY 2 — Anonymous class (old style)
+Arrays.sort(arr, new Comparator<Integer>() {
+    public int compare(Integer a, Integer b) {
+        return a - b;
+    }
+});
+
+// WAY 3 — Separate class (for complex logic)
+class MyComparator implements Comparator<Integer> {
+    public int compare(Integer a, Integer b) {
+        return a - b;
+    }
+}
+Arrays.sort(arr, new MyComparator());
+
+Collections vs Arrays 
+java// For arrays → Arrays.sort()
+int[] arr = {3, 1, 2};
+Arrays.sort(arr); // primitive → no comparator!
+
+Integer[] arr = {3, 1, 2};
+Arrays.sort(arr, (a,b) -> b-a); // object → comparator 
+
+// For lists → Collections.sort()
+List<Integer> list = new ArrayList<>();
+Collections.sort(list, (a,b) -> b-a); 
+
+// Or list.sort()
+list.sort((a,b) -> b-a); 
+
+Interview Trick — Comparator Overflow 
+java//  DANGEROUS — can overflow!
+(a, b) -> a - b
+// if a = Integer.MAX_VALUE, b = -1
+// a - b overflows!
+
+//  SAFE — use Integer.compare
+(a, b) -> Integer.compare(a, b)  // ascending
+(a, b) -> Integer.compare(b, a)  // descending
