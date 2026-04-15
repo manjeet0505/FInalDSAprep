@@ -28,8 +28,8 @@ no need to check those!
 stop when mid crosses high boundary 
 
 Q4 —  
-From back → empty space available → no shifting needed → O(n) ✅
+From back → empty space available → no shifting needed → O(n) 
 
 Q5 — 
-p2 exhausts → nums1 remaining already in place → skip ✅
-p1 exhausts → copy remaining nums2 into nums1  → must do ✅
+p2 exhausts → nums1 remaining already in place → skip 
+p1 exhausts → copy remaining nums2 into nums1  → must do 
