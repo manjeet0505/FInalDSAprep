@@ -1,0 +1,35 @@
+Sort Colors
+Q1: What are the three pointers and what does each represent?
+Q2: Why don't we do mid++ when swapping with high?
+Q3: What is the while condition and why?
+
+Merge Sorted Array
+Q4: Why do we merge from BACK instead of front?
+Q5: After the main while loop ends — which remaining elements do we copy and which do we NOT copy? Why?
+
+
+Q1 — 
+low  → boundary of 0s
+mid  → current element being examined
+high → boundary of 2s
+
+Q2 —
+When we swap arr[mid] with arr[high]
+→ element coming FROM high is UNKNOWN
+→ we haven't checked it yet!
+→ mid must STAY to recheck that element
+
+
+Q3 — 
+Condition is right but reason needs sharpening:
+mid <= high because →
+everything AFTER high = already confirmed 2s
+no need to check those!
+stop when mid crosses high boundary 
+
+Q4 —  
+From back → empty space available → no shifting needed → O(n) ✅
+
+Q5 — 
+p2 exhausts → nums1 remaining already in place → skip ✅
+p1 exhausts → copy remaining nums2 into nums1  → must do ✅
