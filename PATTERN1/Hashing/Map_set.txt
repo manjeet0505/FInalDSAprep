@@ -1,0 +1,58 @@
+PATTERN 7 — HASHMAP / FREQUENCY COUNTING 
+
+What Is HashMap Pattern? 
+Use a HashMap/HashSet to store information
+about elements we've ALREADY SEEN
+
+→ Turns O(n²) brute force into O(n)!
+
+Real World Analogy 
+You're at a party checking for duplicate guests.
+
+Naive way → compare every guest with every other
+            → O(n²) → slow!
+
+Smart way → maintain a GUEST LIST (HashMap)
+            → each new guest → check list instantly
+            → O(1) lookup!
+            → O(n) total!
+
+Why HashMap? 
+Array lookup  → O(1) but only for integer indices
+HashMap lookup → O(1) for ANY key type!
+                 strings, chars, integers, objects
+
+That's the power!
+
+TRIGGER PHRASES 
+If problem says...                               Think...
+"find duplicate"                                 HashSet
+"two sum / pair with sum k"                      HashMap
+"frequency of elements"                          HashMap
+"first non-repeating"                            HashMap
+"group anagrams"                                 HashMap
+"check if two strings are anagrams"              HashMap
+"subarray sum equals k"                          HashMap + Prefix Sum
+
+HashMap vs HashSet 
+HashMap  → stores KEY → VALUE pairs
+           use when you need to store extra info
+           Example: element → its index
+                    element → its frequency
+
+HashSet  → stores only KEYS
+           use when you just need YES/NO
+           Example: have I seen this before?
+
+Core Operations — Memorize These! 
+java// HashMap
+map.put(key, value);           // insert/update
+map.get(key);                  // get value
+map.containsKey(key);          // check existence → O(1)
+map.getOrDefault(key, 0);      // get or default value
+map.remove(key);               // delete
+
+// HashSet
+set.add(element);              // insert
+set.contains(element);         // check → O(1)
+set.remove(element);           // delete
