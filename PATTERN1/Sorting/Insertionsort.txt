@@ -8,6 +8,9 @@ in the already sorted left portion
 Just like sorting playing cards in your hand!
 Pick one card → insert it in right position
 
+Intuition
+Like sorting a hand of cards — pick each element and insert it at the correct position in the already-sorted left portion. Best case O(n) for nearly sorted arrays.
+
 Real World Analogy 
 You're holding sorted cards: [2, 5, 8]
 You pick a new card: 4
