@@ -82,3 +82,25 @@ mergeSort(mid+1, r);  // each time
 fib(n-1) + fib(n-2)
 // 2^n calls → O(2^n)
 For recursion: draw the call tree. Count total nodes × work per node. Merge sort: n nodes × O(1) split + O(n) merge per level × log n levels = O(n log n).
+
+
+
+
+T
+Two Pointers — O(n) time, O(1) space. Both pointers move forward total n steps.
+S
+Sliding Window — O(n) time, O(1) or O(k) space. r and l each move n times total.
+P
+Prefix Sum — O(n) build, O(1) query. HashMap variant: O(n) space.
+K
+Kadane's — O(n) time, O(1) space. Single pass, constant variables.
+B
+Binary Search — O(log n) time, O(1) space. Halves search space each step.
+M
+Merge Sort — O(n log n) time, O(n) space. log n levels × O(n) merge + O(n) temp.
+Q
+Quick Sort — O(n log n) avg time, O(log n) space. O(n²) worst, O(n) worst stack.
+H
+HashMap lookup — O(1) average, O(n) space. Collisions can make it O(n) worst.
+I
+Intervals (sort + scan) — O(n log n) time (sort dominates), O(n) space for result.
