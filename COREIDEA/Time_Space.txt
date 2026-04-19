@@ -1,0 +1,9 @@
+1. Drop constants. O(2n) = O(n). O(3n²) = O(n²). Constants don't matter as n → ∞.
+
+2. Drop smaller terms. O(n² + n) = O(n²). O(n + log n) = O(n). Keep only the dominant term.
+
+3. Sequential steps add. Step1 is O(n), Step2 is O(n) → total O(n) + O(n) = O(n). Not O(n²).
+
+4. Nested loops multiply. Loop inside a loop → O(n) × O(n) = O(n²). Three nested → O(n³).
+
+5. Different variables stay separate. Array A of size n, Array B of size m → O(n × m), not O(n²).
