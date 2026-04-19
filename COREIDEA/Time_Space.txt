@@ -44,3 +44,41 @@ for (int j = 0; j < n; j++) { }  // O(n)
 // O(n) + O(n) = O(2n) = O(n)
 Sequential steps ADD, not multiply. Two separate passes over array = O(n), not O(n²).
 
+
+
+Sliding window inner while → still O(n)
+O(n)
+▾
+int l = 0;
+while (r < n) {           // r moves forward n times
+  while (condition) {     // looks like O(n²)!
+    l++;                  // but l also only moves forward n times TOTAL
+  }
+  r++;
+}
+// r moves n times + l moves n times total = O(2n) = O(n)
+This is the most common confusion! The inner while is NOT O(n) per outer iteration. l only ever moves forward — total moves across ALL iterations = n. So it's O(n) overall.
+
+Halving the input → O(log n)
+O(log n)
+▾
+while (n > 1) {
+  n = n / 2;   // halving each step
+}
+// n=8 → 4 → 2 → 1 = 3 steps = log₂(8)
+// steps = log₂(n) → O(log n)
+Binary search, finding mid, dividing problem in half — all O(log n). Any time input halves each step, it's logarithmic.
+
+
+Recursion → O(branches ^ depth)
+varies
+▾
+// Merge Sort — 2 branches, log n depth
+mergeSort(l, mid);    // 2 calls
+mergeSort(mid+1, r);  // each time
+// 2^(log n) = n calls × O(n) merge = O(n log n)
+
+// Fibonacci naive — 2 branches, n depth
+fib(n-1) + fib(n-2)
+// 2^n calls → O(2^n)
+For recursion: draw the call tree. Count total nodes × work per node. Merge sort: n nodes × O(1) split + O(n) merge per level × log n levels = O(n log n).
