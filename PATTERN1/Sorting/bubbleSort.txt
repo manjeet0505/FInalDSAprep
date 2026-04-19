@@ -4,6 +4,8 @@ What Is Bubble Sort?
 Largest element BUBBLES UP to the end
 in each pass — just like air bubbles 
 rising to the top of water!
+INTUITION - 
+Repeatedly compare adjacent elements and swap if out of order. Largest element "bubbles up" to end in each pass. After i passes, last i elements are sorted.
 
 Real World Analogy 
 Imagine sorting a line of people by height.
