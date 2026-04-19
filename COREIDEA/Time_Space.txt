@@ -7,3 +7,40 @@
 4. Nested loops multiply. Loop inside a loop → O(n) × O(n) = O(n²). Three nested → O(n³).
 
 5. Different variables stay separate. Array A of size n, Array B of size m → O(n × m), not O(n²).
+
+
+
+
+
+Single loop → O(n)
+O(n)
+▾
+for (int i = 0; i < n; i++) {
+  // O(1) work inside
+}
+// runs exactly n times → O(n)
+Even if the loop runs n/2 times or 2n times, drop the constant → still O(n).
+
+
+
+Nested loops → O(n²)
+O(n²)
+▾
+for (int i = 0; i < n; i++) {       // n times
+  for (int j = 0; j < n; j++) {   // n times each
+    // O(1) work
+  }
+}
+// n × n = O(n²)
+But nested doesn't always mean n². If inner loop runs k times (constant), it's still O(n). Always ask: "how many times does the inner loop run in total?"
+
+
+
+Two separate loops → O(n)
+O(n)
+▾
+for (int i = 0; i < n; i++) { }  // O(n)
+for (int j = 0; j < n; j++) { }  // O(n)
+// O(n) + O(n) = O(2n) = O(n)
+Sequential steps ADD, not multiply. Two separate passes over array = O(n), not O(n²).
+
