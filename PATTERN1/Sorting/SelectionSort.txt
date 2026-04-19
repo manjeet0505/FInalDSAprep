@@ -5,6 +5,9 @@ Find the MINIMUM element from unsorted part
 Place it at the beginning
 Repeat for remaining elements
 
+INTUITION - 
+Find the minimum element from unsorted portion, swap it to its correct position. After i passes, first i elements are sorted. Always O(n²) — no early exit.
+
 Unlike Bubble Sort → makes FEWER swaps!
 Maximum n-1 swaps total
 
