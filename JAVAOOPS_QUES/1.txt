@@ -1,0 +1,41 @@
+  Streams API
+A stream is a pipeline of operations on a data source. It does NOT store data — it processes it lazily.
+Three stages:
+javaList<String> names = Arrays.asList("Alice", "Bob", "Charlie", "Dave");
+
+List<String> result = names.stream()           // 1. Source
+    .filter(s -> s.length() > 3)               // 2. Intermediate (lazy)
+    .map(String::toUpperCase)                  // 2. Intermediate (lazy)
+    .sorted()                                  // 2. Intermediate (lazy)
+    .collect(Collectors.toList());             // 3. Terminal (triggers execution)
+Intermediate ops (lazy, return a Stream): filter, map, flatMap, sorted, distinct, limit, skip, peek
+Terminal ops (eager, trigger pipeline): collect, forEach, reduce, count, findFirst, anyMatch, allMatch, min, max, toArray
+flatMap vs map — the one interviewers love:
+java// map: Stream<Stream<String>>
+List<List<String>> nested = Arrays.asList(
+    Arrays.asList("a", "b"), Arrays.asList("c", "d")
+);
+nested.stream().map(List::stream); // Stream<Stream<String>> — NOT what you want
+
+// flatMap: Stream<String>  ← flattens
+nested.stream().flatMap(List::stream); // Stream<String> — "a", "b", "c", "d"
+reduce — fold all elements into one:
+javaint sum = Stream.of(1, 2, 3, 4, 5)
+    .reduce(0, Integer::sum);   // 15
+// (identity, accumulator)
+Collectors:
+java// Group by
+Map<Integer, List<String>> byLength = names.stream()
+    .collect(Collectors.groupingBy(String::length));
+
+// Joining
+String joined = names.stream()
+    .collect(Collectors.joining(", ", "[", "]")); // [Alice, Bob, Charlie, Dave]
+
+// Counting
+Map<Integer, Long> countByLength = names.stream()
+    .collect(Collectors.groupingBy(String::length, Collectors.counting()));
+Parallel Streams:
+javanames.parallelStream().filter(...).collect(...);
+// Uses ForkJoinPool.commonPool() internally
+// NOT always faster — overhead for small collections, thread-safety issues with shared state
