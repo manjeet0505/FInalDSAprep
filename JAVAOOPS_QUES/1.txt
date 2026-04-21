@@ -39,3 +39,18 @@ Parallel Streams:
 javanames.parallelStream().filter(...).collect(...);
 // Uses ForkJoinPool.commonPool() internally
 // NOT always faster — overhead for small collections, thread-safety issues with shared state
+
+
+
+QUESTIONS - 
+1 -  Lambda — questions interviewers ask
+Q1. Can a lambda throw a checked exception?
+Not directly if the functional interface doesn't declare it. Function<T,R> doesn't declare throws Exception, so you can't throw a checked exception inside it. Workarounds: use a custom functional interface that declares the exception, or wrap in try-catch inside the lambda.
+java// Compile error — Function doesn't declare IOException
+Function<String, String> f = s -> Files.readString(Path.of(s)); 
+
+// Fix 1: custom interface
+@FunctionalInterface
+interface ThrowingFunction<T, R> {
+    R apply(T t) throws Exception;
+}
