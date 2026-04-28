@@ -26,3 +26,74 @@ if(head==null || head.next==null) return head;
         curr.next = (left != null) ? left : right;
         return dummy.next;
     
+
+    Problems  - 
+
+    10
+Pattern 10 — Merge & Other LL Patterns
+
+✓
+1.
+Merge Two Sorted Lists
+LC
+Easy
+2.
+Merge K Sorted Lists
+LC
+Hard
+✓
+3.
+Add Two Numbers
+LC
+Medium
+✓
+4.
+Add Two Numbers II
+LC
+Medium
+✓
+5.
+Intersection of Two Linked Lists
+LC
+Easy
+✓
+6.
+Remove Nth Node From End of List
+LC
+Medium
+✓
+7.
+Remove Duplicates from Sorted List
+LC
+Easy
+✓
+8.
+Remove Duplicates from Sorted List II
+LC
+Medium
+✓
+9.
+Sort List (Merge Sort on LL)
+LC
+Medium
+10.
+Copy List with Random Pointer
+LC
+Medium
+11.
+Flatten a Multilevel Doubly Linked List
+LC
+Medium
+✓
+12.
+Delete Node in a Linked List
+LC
+Medium
+✓
+13.
+Remove Linked List Elements
+LC
+Easy
+14.
+Reverse Alternate K Nodes
+G
