@@ -1,0 +1,54 @@
+Monotonic Stack kya hota hai? 
+Regular Stack: koi order nahi!
+Push 3: [3]
+Push 1: [3, 1]
+Push 4: [3, 1, 4]
+Push 2: [3, 1, 4, 2]
+Monotonic Increasing Stack: hamesha increasing order!
+Push 3: [3]
+Push 1: 1 < 3 → pop 3 first!  [1]
+Push 4: 4 > 1 → push directly [1, 4]
+Push 2: 2 < 4 → pop 4 first!  [1, 2]
+Monotonic Decreasing Stack: hamesha decreasing order!
+Push 3: [3]
+Push 1: 1 < 3 → push directly [3, 1]
+Push 4: 4 > 1 → pop 1, pop 3! [4]
+Push 2: 2 < 4 → push directly [4, 2]
+
+Monotonic Stack — WHY use karte hain? 
+Problem: Next Greater Element
+Array: [2, 1, 5, 3, 4]
+
+For each element → next greater element kya hai?
+2 → 5
+1 → 5
+5 → -1 (nahi hai)
+3 → 4
+4 → -1
+
+Brute Force: O(n²) — har element ke liye scan karo
+Monotonic Stack: O(n) ← MAGIC! 
+Core Idea:
+Stack mein "waiting" elements rakhte hain!
+Koi bhi naya element aaya jo BADA hai →
+stack se sab pop karo!
+Popped elements ka NEXT GREATER = naya element!
+
+Monotonic Decreasing Stack Template 
+java// Next Greater Element pattern
+Deque<Integer> stack = new ArrayDeque<>();
+int[] result = new int[n];
+Arrays.fill(result, -1);  // default: no greater element
+
+for(int i = 0; i < n; i++){
+    // current element bada hai stack top se?
+    while(!stack.isEmpty() && nums[stack.peek()] < nums[i]){
+        int idx = stack.pop();
+        result[idx] = nums[i];  // nums[i] = next greater!
+    }
+    stack.push(i);  // index push karo (value nahi!)
+}
+Why index push karte hain, value nahi?
+Index se value nikaal sakte hain: nums[idx]
+Value se index nahi nikaal sakte!
+Result array update karne ke liye index chahiye! 
