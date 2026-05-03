@@ -1,9 +1,13 @@
 MERGE SORT 
 
-What Is Merge Sort? 
-DIVIDE the array into two halves
-RECURSIVELY sort each half
-MERGE the two sorted halves together
+
+What is Merge Sort?
+
+Merge Sort is a divide and conquer algorithm where:
+
+You divide the array into smaller parts
+You sort those parts recursively
+You merge them back in sorted order
 
 Based on DIVIDE & CONQUER strategy!
 
